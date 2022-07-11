@@ -1,0 +1,44 @@
+{
+  "name": "@aquassay/d3-horizon",
+  "version": "0.1.0",
+  "description": "Horizon chart for D3",
+  "module": "src/index.js",
+  "main": "src/index.js",
+  "exports": {
+    "umd": "./dist/d3-horizon.min.js",
+    "default": "./src/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild" : "rm -rf dist && mkdir dist",
+    "build" : "rollup -f umd -n d3 -o dist/d3-horizon.js -- src/index.js && uglifyjs dist/d3-horizon.js -c -m -o dist/d3-horizon.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aquassay/d3-horizon.git"
+  },
+  "keywords": [
+    "d3",
+    "panels",
+    "horizon",
+    "chart"
+  ],
+  "author": "Aquassay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Aquassay/d3-horizon/issues"
+  },
+  "homepage": "https://github.com/Aquassay/d3-horizon#readme",
+  "dependencies": {
+    "d3-array": "^3.2.0",
+    "d3-axis": "^3.0.0",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.0.0",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.1.0"
+  },
+  "devDependencies": {
+    "rollup": "^2.76.0",
+    "uglify-js": "^3.16.2"
+  }
+}
