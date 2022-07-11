@@ -10,9 +10,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild" : "rm -rf build && mkdir build",
-    "build" : "rollup -f umd -n d3 -o build/d3-horizon.js -- src/index.js",
-    "build:min" : "uglifyjs build/d3-horizon.js -c -m -o build/d3-horizon.min.js"
+    "prebuild" : "rm -rf dist && mkdir dist",
+    "build" : "rollup -f umd -n d3 -o dist/d3-horizon.js -- src/index.js && uglifyjs dist/d3-horizon.js -c -m -o dist/d3-horizon.min.js"
   },
   "repository": {
     "type": "git",
