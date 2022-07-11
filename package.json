@@ -1,0 +1,33 @@
+{
+  "name": "@aquassay/d3-horizon",
+  "version": "0.1.0",
+  "description": "Horizon chart for D3",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aquassay/d3-horizon.git"
+  },
+  "keywords": [
+    "d3",
+    "panels",
+    "horizon",
+    "chart"
+  ],
+  "author": "Aquassay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Aquassay/d3-horizon/issues"
+  },
+  "homepage": "https://github.com/Aquassay/d3-horizon#readme",
+  "dependencies": {
+    "d3-array": "^3.2.0",
+    "d3-axis": "^3.0.0",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.0.0",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.1.0"
+  }
+}
