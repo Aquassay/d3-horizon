@@ -191,3 +191,5 @@ const horizon = (series, {
 
     return svg.node();
 };
+
+export default horizon;
