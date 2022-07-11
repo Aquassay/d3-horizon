@@ -173,8 +173,8 @@ const horizon = (series, {
             .attr('paint-order', 'stroke')
             .text(serie.name);
 
-        const listener = (x) => {
-            const index = bisector(d => d.x).left(serie.data, xScale.invert(x), 0, serie.data.length - 1);
+        const listener = (mouseX) => {
+            const index = bisector(x).left(serie.data, xScale.invert(mouseX), 0, serie.data.length - 1);
 
             return {
                 name    : serie.name,
