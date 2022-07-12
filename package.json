@@ -1,6 +1,6 @@
 {
   "name": "@aquassay/d3-horizon",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Horizon chart for D3",
   "module": "src/index.js",
   "main": "src/index.js",
@@ -10,8 +10,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild" : "rm -rf dist && mkdir dist",
-    "build" : "rollup -f umd -n d3 -o dist/d3-horizon.js -- src/index.js && uglifyjs dist/d3-horizon.js -c -m -o dist/d3-horizon.min.js"
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "rollup -f umd -n d3 -o dist/d3-horizon.js -- src/index.js && uglifyjs dist/d3-horizon.js -c -m -o dist/d3-horizon.min.js"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,8 @@
     "d3-scale": "^4.0.2",
     "d3-scale-chromatic": "^3.0.0",
     "d3-selection": "^3.0.0",
-    "d3-shape": "^3.1.0"
+    "d3-shape": "^3.1.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "rollup": "^2.76.0",
