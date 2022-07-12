@@ -4,6 +4,7 @@ import { curveLinear, area } from 'd3-shape';
 import { schemeGreens, schemeBlues } from 'd3-scale-chromatic';
 import { create, pointer } from 'd3-selection';
 import { scaleTime, scaleLinear } from 'd3-scale';
+import { v4 as uuid } from 'uuid';
 
 /**
  * Generate Horizon chart
