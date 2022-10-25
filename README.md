@@ -11,6 +11,7 @@ npm i @aquassay/d3-horizon
 
 ## Dependencies
 
+- [D3 Brush](https://github.com/d3/d3-brush)
 - [D3 Array](https://github.com/d3/d3-array)
 - [D3 Axis](https://github.com/d3/d3-axis)
 - [D3 Scale](https://github.com/d3/d3-scale)
@@ -47,3 +48,23 @@ link.download   = 'export.svg';
 link.click();
 ```
 
+If you want to make a Selection of the data, You can with this : 
+Actually, it return only the first and last dates of the selected range.
+
+```js
+import { horizon } from '@aquassay/d3-horizon';
+
+const container = document.getElementById('#my-horizon-container');
+const data      = [/* your data here */];
+const svg       = horizon(data, {
+    onSelectedEnd(range) {
+        // action on select part like request more data with axios and redraw the graphics like a zoom
+    },
+    onSelectedStart() {
+        // action on start select to force the hiding of the tooltip or other stuff if needed
+    },
+});
+
+container.innerHTML = '';
+container.appendChild(svg);
+```

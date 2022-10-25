@@ -5,6 +5,7 @@ import { schemeGreens, schemeBlues } from 'd3-scale-chromatic';
 import { create, pointer } from 'd3-selection';
 import { scaleTime, scaleLinear } from 'd3-scale';
 import { v4 as uuid } from 'uuid';
+import { brushX } from 'd3-brush';
 
 /**
  * Generate Horizon chart
@@ -35,6 +36,8 @@ import { v4 as uuid } from 'uuid';
  * @param {Number[]}    [options.yRange]                [bottom, top]
  * @param {Array[]}     [options.scheme]                [positive, negative] : Schemes used for show positive and negative values. (Default : [schemeGreens, schemeBlues])
  * @param {Function}    [options.onHover]               Callback on horizon hover to show tooltip with values for Example
+ * @param {Function}    [options.onSelectStartRange]    Callback on the beginning of the selection with the brush. Only available if `onSelectEndRange` is setted
+ * @param {Function}    [options.onSelectEndRange]      Callback after finish the selection with the brush. If setted, activate the brush
  * @returns {SVGElement}                                D3 SVG to show
  */
 const horizon = (series, {
@@ -59,6 +62,8 @@ const horizon = (series, {
     scheme = [schemeGreens, schemeBlues],
     colors = [scheme[0][Math.max(3, bands)], scheme[1][Math.max(3, bands)]], // an array of colors
     onHover, // tooltip element if needed to show data
+    onSelectEndRange,
+    onSelectStartRange,
 } = {}) => {
     const height = series.length * size + marginTop + marginBottom;
     const svg = create('svg')
@@ -220,6 +225,25 @@ const horizon = (series, {
             });
         }
     });
+
+    if (onSelectEndRange) {
+        const brush = brushX();
+
+        svg.append('g')
+            .attr('class', 'brush')
+            .call(brush.on('start', (evt) => {
+                if (onSelectStartRange) {
+                    onSelectStartRange(evt);
+                }
+            }))
+            .call(brush.on('end', (evt) => {
+                const [x1,x2]   = evt.selection;
+                const start     = xScale.invert(x1);
+                const end       = xScale.invert(x2);
+
+                onSelectEndRange([start, end]);
+            }));
+    }
 
     return svg.node();
 };
